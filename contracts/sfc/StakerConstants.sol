@@ -1,6 +1,7 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../common/Decimal.sol";
 
 contract StakersConstants {
@@ -15,7 +16,7 @@ contract StakersConstants {
     /**
      * @dev Minimum amount of stake for a validator, i.e., 1000000 NEC
      */
-    function minSelfStake() public pure returns (uint256) {
+    function minSelfStake() public pure virtual  returns (uint256) {
         // 1000000 NEC
         return 1000000 * 1e18;
     }

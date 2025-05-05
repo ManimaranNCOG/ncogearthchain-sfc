@@ -1,6 +1,7 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./StakerConstants.sol";
 import "../ownership/Ownable.sol";
 import "../version/Version.sol";
@@ -102,7 +103,7 @@ contract SFC is Initializable, Ownable, StakersConstants, Version {
 
     address public stakeTokenizerAddress;
 
-    function isNode(address addr) internal view returns (bool) {
+    function isNode(address addr) internal view virtual returns (bool) {
         return addr == address(node);
     }
 
@@ -357,7 +358,7 @@ contract SFC is Initializable, Ownable, StakersConstants, Version {
     }
 
     function withdraw(uint256 toValidatorID, uint256 wrID) public {
-        address payable delegator = msg.sender;
+        address payable delegator = payable(msg.sender);
         WithdrawalRequest memory request = getWithdrawalRequest[delegator][toValidatorID][wrID];
         require(request.epoch != 0, "request doesn't exist");
         require(_checkAllowedToWithdraw(delegator, toValidatorID), "outstanding sNEC balance");
@@ -555,7 +556,7 @@ contract SFC is Initializable, Ownable, StakersConstants, Version {
     }
 
     function claimRewards(uint256 toValidatorID) public {
-        address payable delegator = msg.sender;
+        address payable delegator = payable(msg.sender);
         Rewards memory rewards = _claimRewards(delegator, toValidatorID);
         // It's important that we transfer after erasing (protection against Re-Entrancy)
         delegator.transfer(rewards.lockupExtraReward.add(rewards.lockupBaseReward).add(rewards.unlockedReward));
@@ -730,7 +731,7 @@ contract SFC is Initializable, Ownable, StakersConstants, Version {
         snapshot.validatorIDs = nextValidatorIDs;
     }
 
-    function _now() internal view returns (uint256) {
+    function _now() internal view virtual returns (uint256) {
         return block.timestamp;
     }
 

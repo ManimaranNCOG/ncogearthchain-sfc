@@ -1,3 +1,4 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -44,6 +45,42 @@ module.exports = {
         //
         // development: {
         // },
+        bscTestnet: {
+            provider: () =>
+                new HDWalletProvider({
+                    privateKeys: ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"],
+                    providerOrUrl: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                }),
+            network_id: 97,
+            confirmations: 10,
+            timeoutBlocks: 600,
+            skipDryRun: true,
+            networkCheckTimeout: 10000
+        },
+        ethTestnet: {
+            provider: () =>
+                new HDWalletProvider({
+                    privateKeys: ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"],
+                    providerOrUrl: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                }),
+            network_id: 11155111,
+            confirmations: 10,
+            timeoutBlocks: 600,
+            skipDryRun: true,
+            networkCheckTimeout: 10000
+        },
+        ncogTestnet: {
+            provider: () =>
+                new HDWalletProvider({
+                    privateKeys: ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"],
+                    providerOrUrl: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                }),
+            network_id: 2528,
+            confirmations: 10,
+            timeoutBlocks: 600,
+            skipDryRun: true,
+            networkCheckTimeout: 10000
+        },
         coverage: {
             host: '127.0.0.1',
             port: 8555,
@@ -71,23 +108,23 @@ module.exports = {
         // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
         // },
 
-    // Useful for private networks
-    // private: {
+        // Useful for private networks
+        // private: {
         // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
         // network_id: 2111,   // This network is yours, in the cloud.
         // production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+        // }
     },
 
     // Set default mocha options here, use special reporters etc.
     mocha: {
-    // timeout: 100000
+        // timeout: 100000
     },
 
     // Configure your compilers
     compilers: {
         solc: {
-            version: '^0.5.17',
+            version: '^0.8.20',
             // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
             settings: { // See the solidity docs for advice about optimization and evmVersion
                 optimizer: {

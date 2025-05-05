@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
 import "./SFC.sol";
 import "../erc20/base/ERC20Burnable.sol";

@@ -1782,7 +1782,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/math/SafeMath.sol": {
+		"@openzeppelin/contracts/utils/math/SafeMath.sol": {
 			"keccak256": "0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076",
 			"urls": [
 				"bzzr://292843005e754e752644f767477ec5ad7a1ffc91ddb18c38b8079c62f3993cad"

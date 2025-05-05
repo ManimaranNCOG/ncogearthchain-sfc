@@ -13,7 +13,7 @@
     "flatten": "rm -rf contracts/Flattened.sol && truffle-flattener contracts/sfc/SFC.sol >> contracts/Flattened.sol"
   },
   "devDependencies": {
-    "@openzeppelin/contracts": "^2.5.1",
+    "@openzeppelin/contracts": "^4.9.6",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
@@ -44,6 +44,7 @@
   "author": "NCOGEarthChain",
   "license": "MIT",
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
     "check-node-version": "^4.2.1",
     "npm": "^7.6.3",
     "truffle": "^5.2.4"

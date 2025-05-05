@@ -1,4 +1,5 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -17,7 +18,7 @@ contract Ownable {
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
-    constructor () internal {
+    constructor () {
         address msgSender = msg.sender;
         _owner = msgSender;
         emit OwnershipTransferred(address(0), msgSender);
@@ -75,8 +76,16 @@ contract Ownable {
     }
 }
 
-contract StakersInterface {
-  function getStakerID(address addr) external view returns (uint256);
+/**
+ * @dev Interface for interacting with Stakers contract.
+ */
+interface StakersInterface {
+    /**
+     * @dev Gets the staker ID associated with an address.
+     * @param addr The address of the staker.
+     * @return The staker ID.
+     */
+    function getStakerID(address addr) external view returns (uint256);
 }
 
 contract StakerInfo is Ownable {
@@ -84,7 +93,7 @@ contract StakerInfo is Ownable {
 
   address internal stakerContractAddress;
 
-  constructor(address _stakerContractAddress) public {
+  constructor(address _stakerContractAddress) {
     stakerContractAddress = _stakerContractAddress;
   }
 

@@ -1,14 +1,13 @@
-pragma solidity ^0.5.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
 import "./ERC20.sol";
-
 
 /**
  * @title Burnable Token
  * @dev Token that can be irreversibly burned (destroyed).
  */
 contract ERC20Burnable is ERC20 {
-
     /**
      * @dev Burns a specific amount of tokens.
      * @param value The amount of token to be burned.
@@ -30,7 +29,8 @@ contract ERC20Burnable is ERC20 {
      * @dev Overrides ERC20._burn in order for burn and burnFrom to emit
      * an additional Burn event.
      */
-    function _burn(address who, uint256 value) internal {
+
+    function _burn(address who, uint256 value) internal override {
         super._burn(who, value);
     }
 }
