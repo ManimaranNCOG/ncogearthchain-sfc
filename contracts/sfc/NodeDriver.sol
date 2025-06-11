@@ -1,13 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../common/Initializable.sol";
 import "../ownership/Ownable.sol";
 import "./SFC.sol";
 
 contract NodeDriverAuth is Initializable, Ownable {
-    using SafeMath for uint256;
 
     SFC internal sfc;
     NodeDriver internal driver;
@@ -35,7 +33,7 @@ contract NodeDriverAuth is Initializable, Ownable {
 
     function incBalance(address acc, uint256 diff) external onlySFC {
         require(acc == address(sfc), "recipient is not the SFC contract");
-        driver.setBalance(acc, address(acc).balance.add(diff));
+        driver.setBalance(acc, address(acc).balance + diff);
     }
 
     function upgradeCode(address acc, address from) external onlyOwner {
